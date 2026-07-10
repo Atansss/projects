@@ -34,9 +34,14 @@ export default function GalleryPage() {
     <div className="gallery-page">
       <ThemeToggle />
 
-      <header className="gallery-page__intro">
-        <p className="gallery-page__eyebrow">The Gallery</p>
-        <h1 className="gallery-page__title">A curated collection, one frame at a time.</h1>
+      <header className="gallery-page__hero">
+        <span className="hero-dot hero-dot--1" aria-hidden="true" />
+        <span className="hero-dot hero-dot--2" aria-hidden="true" />
+        <span className="hero-dot hero-dot--3" aria-hidden="true" />
+        <span className="hero-dot hero-dot--4" aria-hidden="true" />
+        <span className="hero-dot hero-dot--5" aria-hidden="true" />
+        <p className="gallery-page__eyebrow">✦ The Gallery</p>
+        <h1 className="gallery-page__title">A curated collection,<br />one frame at a time.</h1>
       </header>
 
       <div className="gallery-page__controls">
