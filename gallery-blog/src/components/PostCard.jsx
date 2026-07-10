@@ -3,6 +3,11 @@ function truncate(text, max) {
   return text.length > max ? `${text.slice(0, max).trim()}…` : text
 }
 
+function buildAltText(post) {
+  if (post.subtitle) return `${post.title} — ${post.subtitle}`
+  return post.title || 'Gallery image'
+}
+
 export default function PostCard({ post, onImageClick, style }) {
   const hasLink = Boolean(post.link && post.link.trim())
 
@@ -17,7 +22,7 @@ export default function PostCard({ post, onImageClick, style }) {
         {post.image_url ? (
           <img
             src={post.image_url}
-            alt={post.title}
+            alt={buildAltText(post)}
             loading="lazy"
             decoding="async"
             className="post-card__image"

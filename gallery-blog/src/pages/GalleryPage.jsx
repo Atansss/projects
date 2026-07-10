@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { usePosts, useAllTags } from '../hooks/usePosts'
 import Gallery from '../components/Gallery'
 import SearchBar from '../components/SearchBar'
-import TagFilter from '../components/TagFilter'
+import FilterDropdown from '../components/FilterDropdown'
 import Pagination from '../components/Pagination'
 import Lightbox from '../components/Lightbox'
 import ThemeToggle from '../components/ThemeToggle'
@@ -40,8 +40,10 @@ export default function GalleryPage() {
       </header>
 
       <div className="gallery-page__controls">
-        <SearchBar value={search} onChange={setSearch} />
-        <TagFilter tags={tags} active={tag} onChange={setTag} />
+        <div className="gallery-page__search-row">
+          <SearchBar value={search} onChange={setSearch} />
+          <FilterDropdown tags={tags} active={tag} onChange={setTag} />
+        </div>
       </div>
 
       <Gallery

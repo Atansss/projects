@@ -52,7 +52,11 @@ export default function Lightbox({ posts, index, onClose, onNavigate }) {
       )}
 
       <figure className="lightbox__content">
-        <img src={post.image_url} alt={post.title} className="lightbox__image" />
+        <img
+          src={post.image_url}
+          alt={post.subtitle ? `${post.title} — ${post.subtitle}` : post.title || 'Gallery image'}
+          className="lightbox__image"
+        />
         <figcaption className="lightbox__caption">
           <h3>{post.title}</h3>
           {post.subtitle && <p>{post.subtitle}</p>}
