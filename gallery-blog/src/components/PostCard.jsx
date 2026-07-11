@@ -57,7 +57,7 @@ export default function PostCard({ post, onImageClick, style }) {
             className="post-card__button"
           >
             Visit link
-            <span aria-hidden="true">→</span>
+            <span aria-hidden="true">⚡</span>
           </a>
         )}
       </div>

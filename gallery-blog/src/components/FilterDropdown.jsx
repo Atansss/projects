@@ -27,14 +27,13 @@ export default function FilterDropdown({ tags, active, onChange }) {
     <div className="filter-dropdown" ref={wrapRef}>
       <button
         type="button"
-        className={`filter-dropdown__trigger ${active ? 'filter-dropdown__trigger--active' : ''}`}
+        className="filter-dropdown__trigger"
         onClick={() => setOpen((o) => !o)}
         aria-haspopup="listbox"
         aria-expanded={open}
       >
-        <span className="filter-dropdown__icon" aria-hidden="true">⚲</span>
-        Filter
-        {active && <span className="filter-dropdown__badge">1</span>}
+        {active ? active : 'Filter by Tags'}
+        <span className="filter-dropdown__icon" aria-hidden="true">⚡</span>
       </button>
 
       {open && (

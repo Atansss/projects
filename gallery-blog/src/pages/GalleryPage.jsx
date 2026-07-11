@@ -8,6 +8,9 @@ import Pagination from '../components/Pagination'
 import Lightbox from '../components/Lightbox'
 import ThemeToggle from '../components/ThemeToggle'
 
+// TODO: replace with the address you want "Send Custom Email" to open in the visitor's mail client.
+const CONTACT_EMAIL = 'hello@example.com'
+
 export default function GalleryPage() {
   const [search, setSearch] = useState('')
   const [tag, setTag] = useState('')
@@ -15,7 +18,7 @@ export default function GalleryPage() {
   const [lightboxIndex, setLightboxIndex] = useState(null)
 
   const { tags } = useAllTags()
-  const { posts, loading, totalPages } = usePosts({ search, tag, page })
+  const { posts, loading, total, totalPages } = usePosts({ search, tag, page })
 
   useEffect(() => {
     setPage(1)
@@ -34,22 +37,21 @@ export default function GalleryPage() {
     <div className="gallery-page">
       <ThemeToggle />
 
-      <header className="gallery-page__hero">
-        <span className="hero-dot hero-dot--1" aria-hidden="true" />
-        <span className="hero-dot hero-dot--2" aria-hidden="true" />
-        <span className="hero-dot hero-dot--3" aria-hidden="true" />
-        <span className="hero-dot hero-dot--4" aria-hidden="true" />
-        <span className="hero-dot hero-dot--5" aria-hidden="true" />
-        <p className="gallery-page__eyebrow">✦ The Gallery</p>
-        <h1 className="gallery-page__title">A curated collection,<br />one frame at a time.</h1>
-      </header>
+      <header className="gallery-page__header">
+        <h1 className="gallery-page__title">Projects</h1>
 
-      <div className="gallery-page__controls">
-        <div className="gallery-page__search-row">
+        <div className="gallery-page__toolbar">
           <SearchBar value={search} onChange={setSearch} />
+          <a
+            href={`mailto:${CONTACT_EMAIL}`}
+            className="btn btn--ghost btn--email"
+          >
+            Send Custom Email
+            <span aria-hidden="true">✉</span>
+          </a>
           <FilterDropdown tags={tags} active={tag} onChange={setTag} />
         </div>
-      </div>
+      </header>
 
       <Gallery
         posts={posts}
@@ -62,7 +64,7 @@ export default function GalleryPage() {
         hasFilters={hasFilters}
       />
 
-      <Pagination page={page} totalPages={totalPages} onChange={setPage} />
+      <Pagination page={page} totalPages={totalPages} onChange={setPage} total={total} />
 
       {lightboxIndex !== null && (
         <Lightbox
